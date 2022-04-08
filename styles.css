@@ -1,0 +1,633 @@
+@font-face {
+    font-family: 'mark';
+    src: url('./fonts/MarkPro.ttf');
+}
+
+@font-face {
+    font-family: 'markbold';
+    src: url('./fonts/MarkProBold.ttf');
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: mark,-apple-system,BlinkMacSystemFont,Catamaran,sans-serif;
+    background-color: #030711;
+
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, header, hgroup, nav, section, article, aside, footer, figure, figcaption, menu, button {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: normal;
+}
+a {
+    text-decoration:none;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.heading_div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+.heading_div h2 {
+    color: #fff;
+    font-weight: bold;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+}
+
+
+.header_car {
+    background-size: contain;
+    background-image: url(./img/header_bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.header_logo {
+  padding: 20px 0;
+}
+.header_logo img {
+    width: 252px;
+    height: 60px;
+    margin-left: -35px;
+}
+.header_left {
+    flex: 1;
+    padding-bottom: 50px;
+}
+.header_left h2{
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: 0.55px;
+    padding-bottom: 32px;
+}
+.header_left span {
+    background-image:-webkit-linear-gradient(95deg, #c0ff3a 18%, #00ffa3 93%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.header_left p {
+    opacity: 0.7;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    padding-bottom: 60px;
+    line-height: 26px;
+}
+.header_btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.deposit_btn {
+    cursor: pointer;
+    width: 300px;
+    height: 65px;
+    border-radius: 35px;
+    background-image: linear-gradient(96deg, #c0ff3a 18%, #00ffa3 93%);
+    line-height: 65px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #030711;
+    text-align: center;
+}
+.loan_btn {
+    cursor: pointer;
+    width: 234px;
+    height: 64px;
+    border-radius: 40px;
+    border: solid 2px #fff;
+    background-color: rgba(255, 255, 255, 0);
+    line-height: 64px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.header_right {
+    flex: 1;
+}
+.header_right img {
+    width: 100%;
+}
+
+
+.trade_div {
+    padding-left: -10px;
+    padding-right: -10px;
+}
+.trade_item {
+    flex: 1;
+    border-radius: 26px;
+    background-color: rgba(146, 255, 60, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.trade_item p {
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 4px;
+    margin-bottom: 21px;
+    background-image:-webkit-linear-gradient(98deg, #c0ff3a 18%, #00ffa3 92%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.trade_item span {
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+}
+
+
+.currencies_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+}
+.currencies_title div {
+    font-weight: 500;
+    color: #5b6375;
+    text-align: center;
+}
+
+.currencies_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background-color: rgba(146, 255, 60, 0.06);
+}
+.item_left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.item_left div {
+    width: 150px;
+}
+.item_left p {
+    color: #fff;
+    font-weight: 600;
+}
+.item_left span {
+    color: #5b6375;
+}
+.item_center {
+    flex: 1;
+    color: #FFFFFF;
+    line-height: 1;
+    font-weight: 500;
+}
+.item_right {
+    flex: 1;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+    background-image:-webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+
+.description_div {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.description_item {
+    padding: 50px 30px 47px;
+    border-radius: 26px;
+    background-color: rgba(146, 255, 60, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.description_item img {
+    width: 89px;
+
+    margin-bottom: 24px;
+}
+.description_item p {
+    color: #92ff3c;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+.description_item span {
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.banner_div {
+    align-items: center;
+    border-radius: 30px;
+    background-image: linear-gradient(96deg, #c0ff3a 18%, #00ffa3 93%);
+}
+.banner_left {
+   flex: 1;
+}
+.banner_left h3 {
+    font-weight: bold;
+    color: #030711;
+}
+.banner_left p {
+    font-weight: 500;
+    color: #030711;
+    line-height: 1.5;
+    font-weight: 500;
+}
+.banner_right div {
+    cursor: pointer;
+    width: 250px;
+    height: 70px;
+    border-radius: 40px;
+    border: solid 2px #030711;
+    background-color: transparent;
+    line-height: 64px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #030711;
+    text-align: center;
+}
+
+.contact_div {
+    margin-left: -12px;
+    margin-right: -12px;
+}
+.contact_item {
+    flex: 1;
+    background-color: rgba(146, 255, 60, 0.06);
+}
+.contact_item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact_item img {
+    width: 70px;
+    height: 70px;
+}
+.contact_item p {
+    color: #fff;
+    font-weight: 500;
+}
+
+.footer_car {
+    background-size: contain;
+    background-image: url(./img/foot_bg.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+.footer_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.footer_div img {
+    width: 252px;
+    height: 60px;
+}
+.footer_div span {
+    font-weight: 500;
+    color: #fff;
+}
+.footer_div p {
+    color: #fff;
+    opacity: 0.5;
+    text-align: center;
+    letter-spacing: 0.6px;
+}
+@media screen and (max-width:1100px) {
+    .wrapper {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .header_left {
+        padding:10px;
+    }
+
+    .header_logo {
+        padding: 20px 15px;
+      }
+
+    .row_column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .heading_div {
+        padding-bottom: 35px;
+    }
+    .heading_div h2 {
+        font-size: 26px;
+    }
+
+    .deposit_btn {
+        
+    }
+
+    .header_car {
+        padding-bottom: 25px;
+        background-size: contain;
+        background-image: url(./img/header_bg.png);
+        background-repeat: no-repeat;
+        background-position: top -80px right -100px;
+    }
+    .header_left {
+        padding-top: 77px;
+    }
+    .header_left h2 {
+        font-size: 29px;
+    }
+
+    .trade_car {
+        padding-bottom: 45px;
+    }
+    .trade_item {
+        padding: 31px 0;
+        border-radius: 18px;
+       
+        margin: 0;
+        margin-top: 10px;
+    }
+    .trade_item p {
+        font-size: 28px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .trade_item span {
+        font-size: 14px;
+    }
+
+    .currencies_car {
+        padding-bottom: 47px;
+    }
+    .currencies_title div {
+        font-size: 12px;
+    }
+    .currencies_item {
+        padding: 20px 15px;
+    }
+    .item_left img {
+        display: none;
+    }
+    .item_left div {
+        width: 63px;
+    }
+    .item_left p {
+        font-size: 12px;
+    }
+    .item_left span {
+        display: none;
+    }
+    .item_center {
+        font-size: 12px;
+        text-align: center;
+    }
+    .item_right {
+        font-size: 12px;
+    }
+
+    .description_car {
+        padding-bottom: 36px;
+    }
+    .description_item {
+        margin: 20px 15px 0;
+        padding: 25px 20px 23px;
+        border-radius: 18px;
+       
+    }
+    .description_item img {
+        width: 89px;
+        margin-bottom: 24px;
+    }
+    .description_item p {
+        font-size: 20px;
+    }
+    .description_item span {
+        font-size: 16px;
+    }
+
+    .banner_car {
+        padding-bottom: 56px;
+    }
+    .banner_div {
+        padding: 48px 20px 52px;
+    }
+    .banner_left h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .banner_left p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .banner_right div{
+        height:55px;
+        line-height: 48px;
+        margin-top: 30px;
+    }
+
+    .contact_item {
+        padding: 21px 0;
+        border-radius: 18px;
+        margin: 0 12px 10px;
+    }
+    .contact_item img {
+        width: 70px;
+        height: 70px;
+    }
+    .contact_item p {
+        font-size: 16px;
+    }
+
+    .footer_car {
+        padding-bottom: 20px;
+    }
+    .footer_tab {
+        padding-top: 10px;
+        padding-bottom: 32px;
+    }
+    .footer_div span {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+    .footer_div p {
+        font-size: 16px;
+    }
+}
+
+
+@media screen and (min-width:1100px) {
+    .wrapper {
+        width: 1200px;
+        margin: 0 auto
+    }
+    .row_column {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .heading_div {
+        padding-bottom: 55px;
+    }
+    .heading_div h2 {
+        font-size: 44px;
+    }
+
+    .header_car {
+        padding-bottom: 153px;
+    }
+    .header_left {
+        padding-top: 155px;
+    }
+    .header_left h2 {
+        font-size: 47px;
+    }
+
+    .trade_car {
+        padding-bottom: 130px;
+    }
+    .trade_item {
+        padding: 62px 0;
+        border-radius: 26px;
+        margin: 10px;
+    }
+    .trade_item p {
+        font-size: 46px;
+        margin-bottom: 21px;
+    }
+    .trade_item span {
+        font-size: 20px;
+    }
+
+    .currencies_car {
+        padding-bottom: 130px;
+    }
+    .currencies_title {
+        padding: 10px 0;
+    }
+    .currencies_title div {
+        font-size: 16px;
+    }
+    .currencies_item {
+        padding: 20px 0;
+    }
+    .item_left img {
+        width: 38px;
+        margin-right: 18px;
+    }
+    .item_left p {
+        font-size: 18px;
+        margin-bottom: 3px;
+    }
+    .item_left span {
+        font-size: 16px;
+    }
+    .item_center {
+        font-size: 16px;
+        text-align: center;
+    }
+    .item_right {
+        font-size: 16px;
+    }
+
+    .description_car {
+        padding-bottom: 80px;
+    }
+    .description_item {
+        margin: 40px 15px 0;
+        padding: 50px 30px 47px;
+        border-radius: 26px;
+        flex:1;
+    }
+    .description_item img {
+        width: 89px;
+       
+        margin-bottom: 24px;
+    }
+    .description_item p {
+        font-size: 24px;
+    }
+    .description_item span {
+        font-size: 18px;
+    }
+
+    .banner_car {
+        padding-bottom: 130px;
+    }
+
+    .banner_div {
+        padding: 80px 45px 80px;
+    }
+    .banner_left {
+        flex: 1;
+    }
+    .banner_left h3 {
+        font-size: 32px;
+        margin-bottom: 18px;
+    }
+    .banner_left p {
+        font-size: 20px;
+    }
+    .banner_right {
+        padding-left: 50px;
+    }
+
+    .contact_item {
+        padding: 42px 0;
+        border-radius: 26px;
+        margin: 0 12px 10px;
+    }
+    .contact_item img {
+        width: 70px;
+        height: 70px;
+    }
+    .contact_item p {
+        font-size: 20px;
+    }
+
+    .contact_car {
+        padding-bottom: 130px;
+    }
+
+    .footer_car {
+        padding-bottom: 34px;
+    }
+    .footer_div img {
+        width: 252px;
+        height: 60px;
+    }
+    .footer_tab {
+        padding-top: 15px;
+        padding-bottom: 63px;
+    }
+    .footer_div span {
+        font-size: 18px;
+        padding: 10px 30px;
+    }
+    .footer_div p {
+        font-size: 14px;
+    }
+}
