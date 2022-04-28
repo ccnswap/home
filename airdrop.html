@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CCNSwap</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="icon" href="./img/favicon.png">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/hello.all.min.js"></script>
+  <script src="./js/airdrop.js?v=4"></script>
+</head>
+<body>
+<div>
+  <section class="header_car" id="header">
+    <div class="wrapper">
+      <div class="header_logo">
+        <img src="./img/head_logo.png" alt="" style="cursor: pointer;" onclick="location.href='https://ccnswap.org'"/>
+      </div>
+      <div class="header_div row_column">
+        <div class="header_left">
+          <h2>The leading decentralized exchange protocol</h2>
+          <p>The CCNSwap Protocol is an open-source protocol for providing liquidity and trading CRC20 tokens on Computecoin. It eliminates trusted intermediaries and unnecessary forms of rent
+            extraction, allowing for safe, accessible, and efficient exchange activity. The protocol is non-upgradable and designed to be censorship resistant.</p>
+          <div class="header_btn">
+            <a href="https://huygens.ccnswap.org">
+              <div class="deposit_btn">Launche App</div>
+            </a>
+            <a href="#airdrop">
+              <div class="loan_btn">Airdrop</div>
+            </a>
+            
+          </div>
+        </div>
+        <div class="header_right">
+          <img src="./img/head_right_bg.png" alt=""/>
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div></div>
+      </div>
+    </div>
+  </section>
+  <section class="airdrop_car" id="step1">
+    <div class="wrapper">
+      <div class="heading_div" id="airdrop">
+        <h2>Airdrop</h2>
+      </div>
+      <div class="airdrop_what">
+        <p>Complete the tasks below to get airdrops. complete tasks 1, 2, 3 to get 0.1 ccn to experience the computecoin network and ccnswap. after the event you can claim css rewards. The more the number of invitees the more rewards</p>
+      </div>
+      <div class="step_div" >
+        <div class="step_title">
+          <div class="title_number">
+            <div style="flex: 1"></div>
+            <div class="number_div">01</div>
+            <div style="flex:2;justify-content:center;align-items:center;display:flex;margin:20px">
+              <img src="./img/line.png" style="width: 100%;" alt=""/>
+            </div>
+            <div class="number_div" style="background-color: rgba(255, 255, 255, 0.1);color: #a0a8ba;border-color:rgba(255, 255, 255, 0.1);">02</div>
+            <div style="flex:2;justify-content:center;align-items:center;display:flex;margin:20px">
+              <img src="./img/line.png" style="width: 100%;" alt=""/>
+            </div>
+            <div class="number_div" style="background-color: rgba(255, 255, 255, 0.1);color: #a0a8ba;border-color:rgba(255, 255, 255, 0.1);">03</div>
+            <div style="flex: 1"></div>
+          </div>
+          <div class="title_text">
+            <p>Connect Wallet</p>
+            <p>Connect Twitter</p>
+            <p>Complate Tasks</p>
+          </div>
+        </div>
+        <div class="step_one">
+          <img src="./img/ale_max.png" alt=""/>
+          <p id="wallet_info">Click to connect your ale wallet</p>
+          <div class="deposit_btn" style="width:300px" id="connectWallet" onclick="connectwallet()">Connect Wallet</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="airdrop_car" id="step2" style="display:none">
+    <div class="wrapper">
+      <div class="heading_div" id="airdrop">
+        <h2>Airdrop</h2>
+      </div>
+      <div class="airdrop_what">
+        <p>Complete the tasks below to get airdrops. complete tasks 1, 2, 3 to get 0.1 ccn to experience the computecoin network and ccnswap. after the event you can claim css rewards. The more the number of invitees the more rewards</p>
+      </div>
+      <div class="step_div">
+        <div class="step_title">
+          <div class="title_number">
+            <div style="flex: 1"></div>
+            <div class="number_div">01</div>
+            <div style="flex:2;justify-content:center;align-items:center;display:flex;margin:20px">
+              <img src="./img/line.png" style="width: 100%;" alt=""/>
+            </div>
+            <div class="number_div">02</div>
+            <div style="flex:2;justify-content:center;align-items:center;display:flex;margin:20px">
+              <img src="./img/line.png" style="width: 100%;" alt=""/>
+            </div>
+            <div class="number_div" style="background-color: rgba(255, 255, 255, 0.1);color: #a0a8ba;border-color:rgba(255, 255, 255, 0.1);">03</div>
+            <div style="flex: 1"></div>
+          </div>
+          <div class="title_text">
+            <p>Connect Wallet</p>
+            <p>Connect Twitter</p>
+            <p>Complate Tasks</p>
+          </div>
+        </div>
+        <div class="step_one">
+          <img src="./img/twitters.png" alt=""/>
+          <p id="twitter_info">Click to connect your twitter</p>
+          <div class="deposit_btn" style="width:300px" id="connectTwitter" onclick="connecttwitter()">Connect Twitter</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="airdrop_car" id="step3" style="display:none">
+    <div class="wrapper">
+      <div class="heading_div" id="airdrop">
+        <h2>Airdrop</h2>
+      </div>
+      <div class="airdrop_what">
+        <p>Complete the tasks below to get airdrops. complete tasks 1, 2, 3 to get 0.1 ccn to experience the computecoin network and ccnswap. after the event you can claim css rewards. The more the number of invitees the more rewards</p>
+      </div>
+      <div class="airdrop_details">
+        <div class="details_div" >
+          <img class="details_div_img" src="./img/ccs.png" alt="" id="user_photo"/>
+          <span id="user_name">@</span>
+          <div class="details_div_text" style="margin-bottom:7px;">
+            <img src="./img/ale_min.png" alt="" style="margin-right:5px"/>
+            <p id="user_addr"></p>
+          </div>
+        </div>
+        <div class="countdown_div row_column">
+          <div class="countdown_item">
+            <span class="countdown_item_title" id="total_css">0 CCS</span>
+            <p>Available</p>
+          </div>
+          <div class="countdown_item">
+            <span style="color: #fff;" id="lastdate">00:00:00</span>
+            <p>End Time</p>
+          </div>
+          <div class="countdown_item">
+            <div class="header_btn">
+              <div class="disable_btn" id="claim_ccs" style="margin-left:20px" onclick="claimCCS()"><img style="width: 29px;height: 29px;margin-right: 10px" src="./img/ccs_min.png" alt=""/>Claim CCS</div>
+              <div class="disable_btn" style="margin:20px" id="claim_ccn" onclick="claimCCN()"><img style="width: 29px;height: 29px;margin-right: 10px" src="./img/ccn_min.png" alt="" />Claim CCN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step_div">
+        <div class="step_title">
+          <div class="title_number">
+            <div style="flex: 1"></div>
+            <div class="number_div">01</div>
+            <div style="flex:2;justify-content:center;align-items:center;display:flex;margin:20px">
+              <img src="./img/line.png" style="width: 100%;" alt=""/>
+            </div>
+            <div class="number_div">02</div>
+            <div style="flex:2;justify-content:center;align-items:center;display:flex;margin:20px">
+              <img src="./img/line.png" style="width: 100%;" alt=""/>
+            </div>
+            <div class="number_div">03</div>
+            <div style="flex: 1"></div>
+          </div>
+          <div class="title_text">
+            <p>Connect Wallet</p>
+            <p>Connect Twitter</p>
+            <p>Complate Tasks</p>
+          </div>
+        </div>
+        <div class="step_three">
+          <div class="three_item row_column">
+            <div class="three_item_left">
+              <p>1</p>
+              <div class="item_left_text">
+                <span>Follow twitter @ccnswap</span>
+              </div>
+            </div>
+            <div class="three_item_right">
+              <div class="item_right_token">
+                <img src="./img/ccs_min.png" alt=""/>
+                <p>+10 CSS</p>
+              </div>
+            </div>
+            <div class="item_right_btn" onclick="followccs()" id="follow_ccs">Follow</div>
+          </div>
+          <div class="three_item_line"></div>
+          <div class="three_item row_column">
+            <div class="three_item_left">
+              <p>2</p>
+              <div class="item_left_text">
+                <span>Follow twitter @computecoinnet</span>
+              </div>
+            </div>
+            <div class="three_item_right">
+              <div class="item_right_token">
+                <img src="./img/ccs_min.png" alt=""/>
+                <p>+10 CSS</p>
+              </div>
+            </div>
+            <div class="item_right_btn" onclick="followccn()" id="follow_ccn">Follow</div>
+          </div>
+
+          <div class="three_item_line"></div>
+
+          <div class="three_item row_column">
+            <div class="three_item_left">
+              <p>3</p>
+              <div class="item_left_text">
+                <span>RT with #ccnswap + tag 3 friends</span>
+              </div>
+            </div>
+            <div class="three_item_right">
+              <div class="item_right_token">
+                <img src="./img/ccs_min.png" alt=""/>
+                <p>+10 CSS</p>
+              </div>
+            </div>
+            <div class="item_right_btn" onclick="retween()" id="retween_btn">Retween</div>
+          </div>
+          <div class="three_item_line"></div>
+          <div class="three_item row_column">
+            <div class="three_item_left">
+              <p>4</p>
+              <div class="item_left_text">
+                <span>Invite user. per 3 user reward 10 CSS</span>
+              </div>
+            </div>
+            <div class="three_item_right">
+              <p class="item_right_text">your invite <span id="invite_count">  </span> user</p>
+              <div class="item_right_token">
+                <img src="./img/ccs_min.png" alt=""/>
+                <p id="invite_reward">+0 CSS</p>
+              </div>
+            </div>
+            <div class="item_right_btn" onclick="copy()">Invite</div>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="footer_car" id="footer">
+    <div class="wrapper">
+      <div class="footer_div">
+        <img src="./img/head_logo.png" alt=""/>
+        <div class="footer_tab">
+          <a href="https://huygens.ccnswap.org/swap"><span>Swap</span></a>
+          <a href="https://huygens.ccnswap.org/pool"><span>Pool</span></a>
+          <a href="https://huygens.ccnswap.org/farm"><span>Farm</span></a>
+          <a href="https://computecoin.network/Bridge" target="_blank"><span>Bridge</span></a>
+        </div>
+        <p>©️ CCNSwap 2022. All Right Reserved.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ccnswap</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <script src="jq.min.js"></script>
+        <script src="hello.all.min.js"></script>
+    </head>
+    <body>
+        <p><span id="account" style="margin-right:10px"></span><a href="javascript:wallet()">ConnectWallet</a></p>
+        <p><a href="javascript:twitter()">Twitter</a></p>
+        <script type="text/javascript">
+            var account = "";
+            function initTwitter(){
+                let url = window.location.href;
+                let params = url.split('#');
+                (params.length>1)?params=params[1]:params="ccnswap";
+                hello.init({twitter:"4v8GOCxUGCHTPaxYsIoPhFpC0"},{redirect_uri:'http://localhost/oauth?ref='+params+'&address='+account});
+            }
+            function receiveMsg(e) {
+                try{
+                    let data = JSON.parse(e.data);
+                    if(data.key=="oauth_msg"){
+                        tlogin(data.code,data.msg,data.data);
+                    }
+                }catch(e){
+
+                }  
+            }
+            window.onload = function(){
+                if(window.addEventListener) {
+                    window.addEventListener('message',receiveMsg,false);
+                }else {
+                    window.attachEvent('message',receiveMsg);
+                }
+                if (typeof window.aleereum !== "undefined") {
+                    const aleereum = window["aleereum"];
+                    aleereum.on("on_networkId_change", function(networkID){
+                        updateAccount(aleereum.account);
+                    });
+                    aleereum.on("on_islocked_change", function(status){
+                        updateAccount(aleereum.account);
+                    });
+                    aleereum.on("on_isConnected_change", function(status){
+                        updateAccount(aleereum.account);
+                    });
+                    aleereum.on("on_account_change", function(account){
+                        updateAccount(aleereum.account);
+                    });
+                }
+            }
+
+            function updateAccount(a){
+                account = a;
+                $("#account").html(a);
+            }
+
+            function tlogin(code,msg,data){
+                if(code=="0"){
+
+                }else{
+                    alert(msg)
+                }
+            }
+
+            function wallet(){
+                if (typeof window.aleereum !== "undefined") {
+                    const aleereum = window["aleereum"];
+                    if(!aleereum.isConnected || aleereum.islocked){
+                        aleereum.connect();
+                    }
+                    updateAccount(aleereum.account);
+                }else{
+                    alert("Please install ale wallet")
+                }
+            }
+
+            function twitter(){
+                if(!account){
+                    alert("Please connect to the ale wallet");
+                    return;
+                }
+                initTwitter();
+                hello('twitter').login();
+            }
+        </script>
+    </body>
+</html>
