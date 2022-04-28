@@ -170,7 +170,7 @@ async function retween(){
     r = await r.json();
     updateUserInfo(r);
     if(!r.isRetween){
-        window.open("https://twitter.com/intent/tweet?in_reply_to=1519614419906535424&text=Get%20%23computecoin%20%23ccnswap%20%24css%20and%20%24ccn%20%23airdrop%20url%20https%3A%2F%2Fccnswap.org%2Fairdrop.html%23"+user.username)
+        window.open("https://twitter.com/intent/tweet?in_reply_to=1519614419906535424&text=Get%20%23computecoin%20%23ccnswap%20%24ccs%20and%20%24ccn%20%23airdrop%20url%20https%3A%2F%2Fccnswap.org%2Fairdrop.html%23"+user.username)
     }
     loading=false;
 }
