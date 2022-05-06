@@ -119,6 +119,22 @@ function updateUserInfo(data){
             $("#retween_btn").css("background-color","#ffffff")
             $("#retween_btn").html("Retween")
         }
+        if(data.isTelegram==1){
+            $("#telegram_btn").html("√")
+            $("#telegram_btn").css("color","#00ffa3")
+            $("#telegram_btn").css("background-color","rgba(0,0,0,0)")
+        }else{
+            $("#telegram_btn").css("background-color","#ffffff")
+            $("#telegram_btn").html("Telegram")
+        }
+        if(data.isDiscord==1){
+            $("#discord_btn").html("√")
+            $("#discord_btn").css("color","#00ffa3")
+            $("#discord_btn").css("background-color","rgba(0,0,0,0)")
+        }else{
+            $("#discord_btn").css("background-color","#ffffff")
+            $("#discord_btn").html("Discord")
+        }
         if(data.ccnReward==1 && !data.isGetccn){
             $("#claim_ccn").attr("class","deposit_btn");
         }
@@ -200,6 +216,29 @@ async function followccn(){
     //if(!r.isFollowCCN){
         window.open('https://twitter.com/intent/user?screen_name=computecoinnet');
     //}
+    loading=false;
+}
+
+async function chatClick(type){
+    if(loading)return;
+    loading=true;
+    if(type==0){
+        $("#telegram_btn").css("background-color","rgba(0,0,0,0)")
+        $("#telegram_btn").html('<div class="spinner"></div>')
+    }else{
+        $("#discord_btn").css("background-color","rgba(0,0,0,0)")
+        $("#discord_btn").html('<div class="spinner"></div>')
+    }
+    let r = await fetch("https://api.ccnswap.org/chat?user_id="+user.user_id+"&type="+type);
+    r = await r.json();
+    r = await fetch("https://api.ccnswap.org/info?user_id="+user.user_id);
+    r = await r.json();
+    updateUserInfo(r);
+    if(type==0){
+        window.open('https://t.me/ccnswap');
+    }else{
+        window.open('https://discord.gg/zd4ZYwcPth');
+    }
     loading=false;
 }
 
