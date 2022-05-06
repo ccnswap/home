@@ -248,8 +248,17 @@ async function claimCCN(){
     if(user.isGetccn || user.ccnReward!=1){
         return;
     }
+    let v = this;
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LdMHcwfAAAAAJ1fXt3idgWtrv4Y2TGP6ofMfcef',{action:'submit'}).then(function(token) {
+            v.ccnclaim(token);
+        });
+    });
+}
+
+async function ccnclaim(token){
     $("#claim_ccn").html('<div class="spinner"></div>');
-    let r = await fetch("https://api.ccnswap.org/claim?user_id="+user.user_id);
+    let r = await fetch("https://api.ccnswap.org/claim?user_id="+user.user_id+"&token="+token);
     r = await r.json();
     $("#claim_ccn").html('<img style="width: 29px;height: 29px;margin-right: 10px" src="./img/ccn_min.png" alt="" />Claim CCN');
     if(r.code==0){
@@ -262,21 +271,7 @@ async function claimCCN(){
 
 
 async function claimCCS(){
-    if(loading)return;
-    loading=true;
-    if(user.isGetccs || last_time>0){
-        return;
-    }
-    $("#claim_ccs").html('<div class="spinner"></div>');
-    let r = await fetch("https://api.ccnswap.org/claim1?user_id="+user.user_id);
-    r = await r.json();
-    $("#claim_ccs").html('<img style="width: 29px;height: 29px;margin-right: 10px" src="./img/ccs_min.png" alt="" />Claim CCS');
-    if(r.code==0){
-        $("#claim_ccs").attr("class","disable_btn");
-    }else{
-        alert(r.msg);
-    }
-    loading=false
+
 }
 
 function copy(){
