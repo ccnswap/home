@@ -183,9 +183,9 @@ async function followccs(){
     let r = await fetch("https://api.ccnswap.org/info?user_id="+user.user_id);
     r = await r.json();
     updateUserInfo(r);
-    if(!r.isFollow){
+    //if(!r.isFollow){
         window.open('https://twitter.com/intent/user?screen_name=ccnswap');
-    }
+    //}
     loading=false;
 }
 
@@ -197,9 +197,9 @@ async function followccn(){
     let r = await fetch("https://api.ccnswap.org/info?user_id="+user.user_id);
     r = await r.json();
     updateUserInfo(r);
-    if(!r.isFollowCCN){
+    //if(!r.isFollowCCN){
         window.open('https://twitter.com/intent/user?screen_name=computecoinnet');
-    }
+    //}
     loading=false;
 }
 
