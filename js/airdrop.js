@@ -109,7 +109,7 @@ async function refreshBalance() {
     let pow18 = BigNumber(10).exponentiatedBy(18);
     let balance = await erc_con.methods.balanceOf(account).call();
     balance = BigNumber(balance).dividedBy(pow18);
-    $("#lastdate").html(balance.toFixed(0));
+    $("#lastdate").html(balance.toFixed(0)+" CCS");
     $('#yourbalance').html('Your Balance');
     //console.log(account+':'+balance);
 }
