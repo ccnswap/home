@@ -325,7 +325,7 @@ async function ccnclaim(token){
 
 async function ccsclaim(token){
     let claimed = await air_con.methods.isclaimed(account).call();
-    if(!claimed){
+    if(claimed){
         alert("You have claimed");
     }else{
         let claimed = await air_con.methods.tokens(account).call();
