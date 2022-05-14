@@ -350,6 +350,11 @@ a {
     line-height: 1.1;
 }
 
+.airdrop_what span {
+    color: #fff;
+    line-height: 1.1;
+}
+
 .airdrop_details {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.07);
@@ -809,6 +814,10 @@ a {
         font-size: 18px;
         line-height: 27px;
     }
+    .airdrop_what span {
+        font-size: 18px;
+        line-height: 27px;
+    }
     .details_div {
         margin: 0 40px;
     }
@@ -1051,6 +1060,10 @@ a {
         padding: 42px 33px;
     }
     .airdrop_what p {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .airdrop_what span {
         font-size: 20px;
         line-height: 30px;
     }

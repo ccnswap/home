@@ -3,6 +3,15 @@ var user;
 var last_time;
 var timer;
 var loading=false;
+
+const erc_addr = "0x0107caD77c4Fa5C8dd9c8FD1C316f0F7182b7758";
+const air_addr = "0xe792C4F39e117BFa2CDBdF831d37b6221DbC8F1D";
+const erc_abi = [ { "constant": true, "inputs": [], "name": "name", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_spender", "type": "address" }, { "name": "_value", "type": "uint256" } ], "name": "approve", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_from", "type": "address" }, { "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" } ], "name": "transferFrom", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "decimals", "outputs": [ { "name": "", "type": "uint8" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "_owner", "type": "address" } ], "name": "balanceOf", "outputs": [ { "name": "balance", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "symbol", "outputs": [ { "name": "", "type": "string" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" } ], "name": "transfer", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_owner", "type": "address" }, { "name": "_spender", "type": "address" } ], "name": "allowance", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "payable": true, "stateMutability": "payable", "type": "fallback" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "owner", "type": "address" }, { "indexed": true, "name": "spender", "type": "address" }, { "indexed": false, "name": "value", "type": "uint256" } ], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": true, "name": "from", "type": "address" }, { "indexed": true, "name": "to", "type": "address" }, { "indexed": false, "name": "value", "type": "uint256" } ], "name": "Transfer", "type": "event" } ];
+const air_abi = [ { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [ { "indexed": false, "internalType": "address", "name": "account", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" } ], "name": "Claim", "type": "event" }, { "inputs": [], "name": "_ccs", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "_claimed", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "_owner", "outputs": [ { "internalType": "address", "name": "", "type": "address" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "", "type": "address" } ], "name": "_tokens", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "addr", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" } ], "name": "addToken", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "claim", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "addr", "type": "address" } ], "name": "isclaimed", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "addr", "type": "address" } ], "name": "setOwner", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "addr", "type": "address" } ], "name": "tokens", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "address", "name": "account", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" } ], "name": "transfer", "outputs": [], "stateMutability": "nonpayable", "type": "function" } ];
+const web3 = new Web3(new Web3.providers.HttpProvider('https://huygens.computecoin.network'));
+const air_con = new web3.eth.Contract(air_abi,air_addr);
+const erc_con = new web3.eth.Contract(erc_abi,erc_addr);
+
 function initTwitter(){
     let url = window.location.href;
     let params = url.split('#');
@@ -72,6 +81,20 @@ window.onload = function(){
     }else{
         $("#connectWallet").html("Install Ale")
     }
+    refreshReward();
+}
+
+async function refreshReward(){
+    let pow18 = BigNumber(10).exponentiatedBy(18);
+    let last = await erc_con.methods.balanceOf(air_addr).call();
+    last = BigNumber(last).dividedBy(pow18);
+    let claimed = BigNumber(100000).minus(last);
+    $('#rema_ccs1').html(last.toFixed(0));
+    $('#rema_ccs2').html(last.toFixed(0));
+    $('#rema_ccs3').html(last.toFixed(0));
+    $('#claimed_ccs1').html(claimed.toFixed(0));
+    $('#claimed_ccs2').html(claimed.toFixed(0));
+    $('#claimed_ccs3').html(claimed.toFixed(0));
 }
 
 function updateAccount(addr){
@@ -82,6 +105,15 @@ function updateAccount(addr){
     account = addr;
 }
 
+async function refreshBalance() {
+    let pow18 = BigNumber(10).exponentiatedBy(18);
+    let balance = await erc_con.methods.balanceOf(account).call();
+    balance = BigNumber(balance).dividedBy(pow18);
+    $("#lastdate").html(balance.toFixed(0));
+    $('#yourbalance').html('Your Balance');
+    //console.log(account+':'+balance);
+}
+
 function updateUserInfo(data){
     if(data){
         user = data;
@@ -90,8 +122,15 @@ function updateUserInfo(data){
         $("#user_addr").html(account);
         $("#total_css").html(data.totalReward+" CCS");
         last_time = data.lastdate/1000;
-        if(timer)clearInterval(timer);
-        timer = setInterval(TimeRow, 1000);
+        if(last_time>0){
+            if(timer)clearInterval(timer);
+            timer = setInterval(TimeRow, 1000);
+        }else{
+            refreshBalance();
+            setInterval(() => {
+                refreshBalance();
+            }, 3000);
+        }
         if(last_time<=0 && !data.isGetccs){
             $("#claim_ccs").attr("class","deposit_btn");
         }
@@ -158,6 +197,10 @@ function TimeRow() {
         if(!user.isGetccs){
             $("#claim_ccs").attr("class","deposit_btn");
         }
+        refreshBalance();
+        setInterval(() => {
+            refreshBalance();
+        }, 3000);
     }
 }
 
@@ -199,9 +242,7 @@ async function followccs(){
     let r = await fetch("https://api.ccnswap.org/info?user_id="+user.user_id);
     r = await r.json();
     updateUserInfo(r);
-    //if(!r.isFollow){
-        window.open('https://twitter.com/intent/user?screen_name=ccnswap');
-    //}
+    window.open('https://twitter.com/intent/user?screen_name=ccnswap');
     loading=false;
 }
 
@@ -213,9 +254,7 @@ async function followccn(){
     let r = await fetch("https://api.ccnswap.org/info?user_id="+user.user_id);
     r = await r.json();
     updateUserInfo(r);
-    //if(!r.isFollowCCN){
-        window.open('https://twitter.com/intent/user?screen_name=computecoinnet');
-    //}
+    window.open('https://twitter.com/intent/user?screen_name=computecoinnet');
     loading=false;
 }
 
@@ -243,12 +282,13 @@ async function chatClick(type){
 }
 
 async function claimCCN(){
-    if(loading)return;
-    loading=true;
     if(user.isGetccn || user.ccnReward!=1){
         return;
     }
+    if(loading)return;
+    loading=true;
     let v = this;
+    $("#claim_ccn").html('<div class="spinner"></div>');
     grecaptcha.ready(function() {
         grecaptcha.execute('6LdMHcwfAAAAAJ1fXt3idgWtrv4Y2TGP6ofMfcef',{action:'submit'}).then(function(token) {
             v.ccnclaim(token);
@@ -256,11 +296,25 @@ async function claimCCN(){
     });
 }
 
+async function claimCCS(){
+    if(last_time>0){
+        return;
+    }
+    if(loading)return;
+    loading=true;
+    let v = this;
+    $("#claim_ccs").html('<div class="spinner"></div>');
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LdMHcwfAAAAAJ1fXt3idgWtrv4Y2TGP6ofMfcef',{action:'submit'}).then(function(token) {
+            v.ccsclaim(token);
+        });
+    });
+}
+
 async function ccnclaim(token){
-    $("#claim_ccn").html('<div class="spinner"></div>');
     let r = await fetch("https://api.ccnswap.org/claim?user_id="+user.user_id+"&token="+token);
     r = await r.json();
-    $("#claim_ccn").html('<img style="width: 29px;height: 29px;margin-right: 10px" src="./img/ccn_min.png" alt="" />Claim CCN');
+    $("#claim_ccn").html('Claim CCN');
     if(r.code==0){
         $("#claim_ccn").attr("class","disable_btn");
     }else{
@@ -269,9 +323,26 @@ async function ccnclaim(token){
     loading=false
 }
 
-
-async function claimCCS(){
-
+async function ccsclaim(token){
+    let claimed = await air_con.methods.isclaimed(account).call();
+    if(!claimed){
+        alert("You have claimed");
+    }else{
+        let claimed = await air_con.methods.tokens(account).call();
+        if(claimed>0){
+            window.open('https://ccnswap.org/wallet.html','ccnswap');
+        }else{
+            let r = await fetch("https://api.ccnswap.org/claimccs?user_id="+user.user_id+"&token="+token);
+            r = await r.json();
+            if(r.code==0){
+                window.open('https://ccnswap.org/wallet.html','ccnswap');
+            }else{
+                alert(r.msg);
+            }
+        }
+    }
+    $("#claim_ccs").html('Claim CCN');
+    loading=false
 }
 
 function copy(){

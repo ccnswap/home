@@ -5,11 +5,13 @@
   <title>CCNSwap</title>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link rel="icon" href="./img/favicon.png">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=12">
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdMHcwfAAAAAJ1fXt3idgWtrv4Y2TGP6ofMfcef"></script>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/hello.all.min.js"></script>
-  <script src="./js/airdrop.js?v=7"></script>
-  <script src="https://www.google.com/recaptcha/api.js?render=6LdMHcwfAAAAAJ1fXt3idgWtrv4Y2TGP6ofMfcef"></script>
+  <script src="./js/web3.min.js"></script>
+  <script src="./js/bignumber.js"></script>
+  <script src="./js/airdrop.js?v=10"></script>
 </head>
 <body>
 <div>
@@ -48,7 +50,9 @@
         <h2>Airdrop</h2>
       </div>
       <div class="airdrop_what">
-        <p>Complete the tasks below to get airdrops. complete tasks 1, 2, 3 to get 0.1 ccn to experience the computecoin network and ccnswap. after the event you can claim ccs rewards. The more the number of invitees the more rewards</p>
+        <p>After the countdown is over, you can claim CCS. Due to the large number of malicious accounts, we limit the number of each account to a maximum of <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;">100</span>. A total of <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;">100,000</span> CSS will be airdropped until the end of the claim.</p>
+        <span>Unclaimed <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;" id="rema_ccs1">100000</span></span>
+        <span style="margin-left:10px">Claimed <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;" id="claimed_ccs1">0</span></span>
       </div>
       <div class="step_div" >
         <div class="step_title">
@@ -85,7 +89,9 @@
         <h2>Airdrop</h2>
       </div>
       <div class="airdrop_what">
-        <p>Complete the tasks below to get airdrops. complete tasks 1, 2, 3 to get 0.1 ccn to experience the computecoin network and ccnswap. after the event you can claim ccs rewards. The more the number of invitees the more rewards</p>
+        <p>After the countdown is over, you can claim CCS. Due to the large number of malicious accounts, we limit the number of each account to a maximum of <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;">100</span>. A total of <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;">100,000</span> CSS will be airdropped until the end of the claim.</p>
+        <span>Unclaimed <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;" id="rema_ccs2">100000</span></span>
+        <span style="margin-left:10px">Claimed <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;" id="claimed_ccs2">0</span></span>
       </div>
       <div class="step_div">
         <div class="step_title">
@@ -122,7 +128,9 @@
         <h2>Airdrop</h2>
       </div>
       <div class="airdrop_what">
-        <p>Complete the tasks below to get airdrops. complete tasks 1, 2, 3 to get 0.1 ccn to experience the computecoin network and ccnswap. after the event you can claim ccs rewards. The more the number of invitees the more rewards</p>
+        <p>After the countdown is over, you can claim CCS. Due to the large number of malicious accounts, we limit the number of each account to a maximum of <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;">100</span>. A total of <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;">100,000</span> CSS will be airdropped until the end of the claim.</p>
+        <span>Unclaimed <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;" id="rema_ccs3">100000</span></span>
+        <span style="margin-left:10px">Claimed <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;" id="claimed_ccs3">0</span></span>
       </div>
       <div class="airdrop_details">
         <div class="details_div" >
@@ -139,13 +147,13 @@
             <p>Available</p>
           </div>
           <div class="countdown_item">
-            <span style="color: #fff;" id="lastdate">00:00:00</span>
-            <p>End Time</p>
+            <span style="font-weight: Bold;background-image: -webkit-linear-gradient(100deg, #c0ff3a 18%, #00ffa3 91%);-webkit-background-clip:text;-webkit-text-fill-color: transparent;" id="lastdate">00:00:00</span>
+            <p id="yourbalance">End Time</p>
           </div>
           <div class="countdown_item">
             <div class="header_btn">
-              <div class="disable_btn" id="claim_ccs" style="margin-left:20px" onclick="claimCCS()"><img style="width: 29px;height: 29px;margin-right: 10px" src="./img/ccs_min.png" alt=""/>Claim CCS</div>
-              <div class="disable_btn" style="margin:20px" id="claim_ccn" onclick="claimCCN()"><img style="width: 29px;height: 29px;margin-right: 10px" src="./img/ccn_min.png" alt="" />Claim CCN</div>
+              <div class="disable_btn" id="claim_ccs" onclick="claimCCS()">Claim CCS</div>
+              <div class="disable_btn" style="margin:20px" id="claim_ccn" onclick="claimCCN()">Claim CCN</div>
             </div>
           </div>
         </div>
@@ -264,7 +272,7 @@
             <div class="three_item_left">
               <p>6</p>
               <div class="item_left_text">
-                <span>Invite user. per 3 user reward 10 CCS</span>
+                <span>Invite user. per 3 user reward 3 CCS</span>
               </div>
             </div>
             <div class="three_item_right">
