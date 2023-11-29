@@ -84,6 +84,24 @@ a {
     background-image: url(./img/header_bg.png);
     background-repeat: no-repeat;
     background-position: center;
+    padding-top: 32px;
+}
+.header_tag {
+    height: 32px;
+    line-height: 32px;
+    background-color: #92ff3c;
+    color: #030711;
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.header_tag_a {
+    font-weight: bold;
 }
 .header_logo {
     padding: 20px 0;
